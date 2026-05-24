@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../app_components.dart';
+
+import 'app_components.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -41,7 +42,7 @@ class FooterSection extends StatelessWidget {
             onChanged: (value) {},
             decoration: InputDecoration(
               hintText: "Digite seu melhor endereço de email",
-              hintStyle: const TextStyle(color: Colors.black),
+              hintStyle: GoogleFonts.poppins(color: Colors.black),
               filled: true,
               fillColor: Colors.transparent,
               contentPadding: const EdgeInsets.symmetric(
@@ -98,7 +99,10 @@ class FooterSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset('assets/images/UseDev_Verde.svg', height: 40),
+          SvgPicture.asset(
+            'assets/images/UseDev_Verde.svg',
+            height: 40,
+          ),
           const SizedBox(height: 10),
           Text(
             "Hora de abraçar seu lado geek!",
@@ -146,7 +150,7 @@ class FooterSection extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               const Wrap(
-                spacing: 12,
+                spacing: 20,
                 runSpacing: 10,
                 alignment: WrapAlignment.start,
                 children: [

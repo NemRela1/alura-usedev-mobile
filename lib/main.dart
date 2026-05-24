@@ -1,9 +1,9 @@
 // Autor: André Lucas Conceição Magalhães
 // GitHub: https://github.com/lmagalhaesdev
 // LinkedIn: https://www.linkedin.com/in/alucascmagalhaes/
-// Data: 20/03/2026
+// Data: 24/05/2026
 
-import 'package:app/ui/home/home.dart';
+import 'package:app/src/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {

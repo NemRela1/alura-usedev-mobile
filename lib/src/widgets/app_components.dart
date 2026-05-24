@@ -25,7 +25,7 @@ class FooterLink extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             content,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               color: Colors.white70,
               fontSize: 14,
               height: 1.6,
@@ -58,7 +58,6 @@ class SocialIcon extends StatelessWidget {
     return Image.asset(
       path,
       height: 35,
-      color: const Color(0xFFFF55DF),
       fit: BoxFit.contain,
     );
   }
@@ -69,6 +68,7 @@ class CategoryCard extends StatelessWidget {
   final String title;
   final String? price;
   final bool isDark;
+  final IconData? icon;
   final VoidCallback onTap;
 
   const CategoryCard({
@@ -78,6 +78,7 @@ class CategoryCard extends StatelessWidget {
     required this.onTap,
     this.price,
     this.isDark = false,
+    this.icon,
   });
 
   @override
@@ -109,7 +110,21 @@ class CategoryCard extends StatelessWidget {
                   ),
                 ),
                 padding: const EdgeInsets.all(12),
-                child: Image.asset(imageUrl, fit: BoxFit.contain),
+                child: icon != null
+                    ? Icon(icon, size: 60, color: Colors.white)
+                    : (imageUrl.startsWith('http')
+                        ? Image.network(
+                            imageUrl,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(Icons.broken_image, size: 50),
+                          )
+                        : Image.asset(
+                            imageUrl,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(Icons.image, size: 50, color: Colors.white),
+                          )),
               ),
             ),
             Container(

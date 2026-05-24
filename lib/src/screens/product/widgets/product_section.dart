@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../shared/app_components.dart';
+import '../../../widgets/app_components.dart';
+import '../../../services/cart_service.dart';
+import '../../../models/product.dart';
 
 class ProductSection extends StatefulWidget {
   const ProductSection({
     super.key,
-    required this.title,
-    required this.img,
-    required this.description,
-    required this.price,
+    required this.product,
     this.options,
     this.others,
   });
 
-  final String title;
-  final String img;
-  final String price;
-  final String description;
+  final ProductModel product;
   final Map<String, dynamic>? options;
   final Map<String, dynamic>? others;
 
@@ -57,58 +52,52 @@ class _ProductSectionState extends State<ProductSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16, top: 20, bottom: 10),
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(Icons.arrow_back_ios_sharp, size: 20),
-                  const SizedBox(width: 16),
-                  const Text(
-                    "Detalhes do Produto",
-                    style: TextStyle(
-                      fontFamily: 'Orbitron',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
+          Container(
             height: 300,
             width: double.infinity,
-            child: Image.asset(widget.img, fit: BoxFit.contain),
+            decoration: const BoxDecoration(
+              color: Color(0xFF0D0221),
+              image: DecorationImage(
+                image: AssetImage('assets/images/Banner_Mobile.png'),
+                fit: BoxFit.cover,
+                opacity: 0.4,
+              ),
+            ),
+            child: widget.product.image.startsWith('http')
+                ? Image.network(
+              widget.product.image,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.broken_image, size: 100, color: Colors.white),
+            )
+                : const Icon(Icons.image, size: 100, color: Colors.white),
           ),
           const SizedBox(height: 10),
           Text(
-            widget.title,
+            widget.product.title,
             style: GoogleFonts.orbitron(
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 20),
-          Wrap(
+          const Wrap(
             spacing: 20,
             runSpacing: 10,
             alignment: WrapAlignment.start,
             children: [
-              SvgPicture.asset('assets/images/compartilhar.svg'),
-              SvgPicture.asset('assets/images/favoritar.svg'),
+              Icon(Icons.share, size: 30, color: Colors.black),
+              Icon(Icons.favorite_border, size: 30, color: Colors.black),
             ],
           ),
           const SizedBox(height: 20),
           Text(
-            widget.description,
+            widget.product.description,
             style: GoogleFonts.poppins(fontSize: 20),
           ),
           const SizedBox(height: 15),
           Text(
-            "R\$ ${widget.price}",
+            "R\$ ${widget.product.price.toStringAsFixed(2).replaceAll('.', ',')}",
             style: GoogleFonts.poppins(
               fontSize: 24,
               color: Colors.black,
@@ -134,6 +123,7 @@ class _ProductSectionState extends State<ProductSection> {
                     Radio<String>(
                       value: choiceString,
                       groupValue: _selectedOption,
+                      toggleable: true,
                       activeColor: Colors.black,
                       fillColor: WidgetStateProperty.all(Colors.black),
                       onChanged: (String? value) {
@@ -185,6 +175,14 @@ class _ProductSectionState extends State<ProductSection> {
           Center(
             child: ElevatedButton(
               onPressed: () {
+                final quantity = int.parse(_selectedQuantity);
+                CartService().addToCart(
+                  widget.product,
+                  quantity: quantity,
+                  size: _selectedOption ?? 'M',
+                );
+
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Produto adicionado ao carrinho!'),
@@ -207,21 +205,16 @@ class _ProductSectionState extends State<ProductSection> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/add_shopping_cart.svg',
-                    width: 24,
-                    height: 24,
-                    colorFilter: const ColorFilter.mode(
-                      Colors.white,
-                      BlendMode.srcIn,
-                    ),
+                  const Icon(
+                    Icons.add_shopping_cart,
+                    size: 24,
+                    color: Colors.white,
                   ),
                   const SizedBox(width: 14),
-                  const Text(
+                  Text(
                     "Adicionar ao carrinho",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 22,
-                      fontFamily: 'Poppins',
                       fontWeight: FontWeight.bold,
                     ),
                   ),

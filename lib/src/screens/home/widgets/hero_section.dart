@@ -8,52 +8,34 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 740,
-      color: const Color(0xFF0D0221),
+      height: 500,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF0D0221), Color(0xFF2D0E5E)],
+        ),
+        image: DecorationImage(
+          image: AssetImage('assets/images/Banner_Mobile.png'),
+          fit: BoxFit.cover,
+          opacity: 0.4,
+        ),
+      ),
       child: Stack(
         children: [
-          Positioned(
-            top: 420,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Image.asset(
-              'assets/images/Banner_Mobile.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          Positioned(
-            top: 30,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Image.asset(
-                'assets/images/camisabanner.png',
-                fit: BoxFit.cover,
-                height: 380,
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: 450,
-            left: 0,
-            right: 0,
+          Positioned.fill(
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       Text(
                         "Hora de abraçar seu",
                         textAlign: TextAlign.center,
                         style: GoogleFonts.orbitron(
-                          fontSize: 42,
+                          fontSize: 38,
                           fontWeight: FontWeight.bold,
                           color: const Color(0xFFFF55DF),
                         ),
@@ -70,16 +52,24 @@ class HeroSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
+                Text(
+                  "As melhores roupas e acessórios\npara desenvolvedores.",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                    color: Colors.white70,
+                  ),
+                ),
+                const SizedBox(height: 40),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    overlayColor: const Color(0xFF430091),
                     backgroundColor: const Color(0xFF780BF7),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
-                      vertical: 15,
+                      vertical: 18,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -88,7 +78,7 @@ class HeroSection extends StatelessWidget {
                   child: Text(
                     "Ver as novidades!",
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
