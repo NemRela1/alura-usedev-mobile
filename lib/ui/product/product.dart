@@ -1,9 +1,8 @@
-import 'package:app/pages/product/widgets/product_section.dart';
+import 'package:app/ui/product/widgets/product_section.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/widgets/footer.dart';
-import '../../shared/widgets/navbar.dart';
-import '../../shared/widgets/searchbar.dart';
+import 'package:app/shared/widgets/footer.dart';
+import 'package:app/shared/widgets/navbar.dart';
 
 class ProductPage extends StatelessWidget {
   final String title;
@@ -31,9 +30,7 @@ class ProductPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            Navbar(),
-            Searchbar(),
-
+            const Navbar(),
 
             ProductSection(
               title: title,
@@ -43,7 +40,7 @@ class ProductPage extends StatelessWidget {
               options: options,
               others: others,
             ),
-            FooterSection(),
+            const FooterSection(),
           ],
         ),
       ),

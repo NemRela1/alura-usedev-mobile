@@ -30,7 +30,7 @@ class Searchbar extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: BorderSide(color: Color(0xFFFF55DF0), width: 2),
+            borderSide: BorderSide(color: Color(0xfff55df0), width: 2),
           ),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
         ),

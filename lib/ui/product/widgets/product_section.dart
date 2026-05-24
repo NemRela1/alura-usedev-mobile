@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../shared/app_components.dart';
 
-class ProductSection extends StatelessWidget {
+class ProductSection extends StatefulWidget {
   const ProductSection({
     super.key,
     required this.title,
@@ -22,9 +21,37 @@ class ProductSection extends StatelessWidget {
   final Map<String, dynamic>? others;
 
   @override
+  State<ProductSection> createState() => _ProductSectionState();
+}
+
+class _ProductSectionState extends State<ProductSection> {
+  String? _selectedOption;
+  String _selectedQuantity = '1';
+  String? _selectedOther;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.options != null && widget.options!['choices'] != null) {
+      final choices = widget.options!['choices'] as List<dynamic>;
+      if (choices.isNotEmpty) {
+        _selectedOption = choices[0].toString();
+      }
+    }
+
+    if (widget.others != null && widget.others!.isNotEmpty) {
+      final firstKey = widget.others!.keys.first;
+      final choices = widget.others![firstKey] as List<dynamic>;
+      if (choices.isNotEmpty) {
+        _selectedOther = choices[0].toString();
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return
-      Container(
+    return Container(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,20 +80,17 @@ class ProductSection extends StatelessWidget {
           SizedBox(
             height: 300,
             width: double.infinity,
-            child: Image.asset(img, fit: BoxFit.contain),
+            child: Image.asset(widget.img, fit: BoxFit.contain),
           ),
-
           const SizedBox(height: 10),
-
           Text(
-            title,
+            widget.title,
             style: const TextStyle(
               fontSize: 32,
               fontFamily: 'Orbitron',
               fontWeight: FontWeight.bold,
             ),
           ),
-
           const SizedBox(height: 20),
           Wrap(
             spacing: 20,
@@ -79,14 +103,12 @@ class ProductSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            description,
+            widget.description,
             style: const TextStyle(fontSize: 20, fontFamily: 'Poppins'),
           ),
-
           const SizedBox(height: 15),
-
           Text(
-            "R\$ $price",
+            "R\$ ${widget.price}",
             style: const TextStyle(
               fontSize: 24,
               fontFamily: 'Poppins',
@@ -95,10 +117,10 @@ class ProductSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          if (options != null) ...[
+          if (widget.options != null) ...[
             const SizedBox(height: 25),
             Text(
-              options!['optionsLabel'] ?? 'Escolha uma opção',
+              widget.options!['optionsLabel'] ?? 'Escolha uma opção',
               style: const TextStyle(
                 fontSize: 18,
                 fontFamily: 'Poppins',
@@ -106,19 +128,24 @@ class ProductSection extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-
             Column(
-              children: (options!['choices'] as List<dynamic>).map((choice) {
+              children: (widget.options!['choices'] as List<dynamic>).map((choice) {
+                final choiceString = choice.toString();
                 return Row(
                   children: [
                     Radio<String>(
-                      value: choice.toString(),
-                      groupValue: (options!['choices'] as List)[0].toString(),
+                      value: choiceString,
+                      groupValue: _selectedOption,
                       activeColor: Colors.black,
                       fillColor: WidgetStateProperty.all(Colors.black),
+                      onChanged: (String? value) {
+                        setState(() {
+                          _selectedOption = value;
+                        });
+                      },
                     ),
                     Text(
-                      choice.toString(),
+                      choiceString,
                       style: const TextStyle(
                         fontFamily: 'Poppins',
                         color: Colors.black,
@@ -131,25 +158,43 @@ class ProductSection extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 10),
-
           CustomSelect(
             label: "Quantidade",
             items: List.generate(10, (index) => (index + 1).toString()),
+            value: _selectedQuantity,
+            onChanged: (value) {
+              if (value != null) {
+                setState(() {
+                  _selectedQuantity = value;
+                });
+              }
+            },
           ),
-
           const SizedBox(height: 20),
-
-          if (others != null)
+          if (widget.others != null && widget.others!.isNotEmpty)
             CustomSelect(
-              label: others!.keys.first,
-              items: (others!.values.first as List)
+              label: widget.others!.keys.first,
+              items: (widget.others!.values.first as List)
                   .map((e) => e.toString())
                   .toList(),
+              value: _selectedOther,
+              onChanged: (value) {
+                setState(() {
+                  _selectedOther = value;
+                });
+              },
             ),
           const SizedBox(height: 20),
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Produto adicionado ao carrinho!'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                 overlayColor: const Color(0xFF430091),
                 backgroundColor: const Color(0xFF780BF7),

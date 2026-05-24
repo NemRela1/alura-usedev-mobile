@@ -150,72 +150,60 @@ class CategoryCard extends StatelessWidget {
 
 class CustomSelect extends StatelessWidget {
   final String label;
-
   final List<String> items;
+  final String? value;
+  final ValueChanged<String?>? onChanged;
 
-  const CustomSelect({super.key, required this.label, required this.items});
+  const CustomSelect({
+    super.key,
+    required this.label,
+    required this.items,
+    this.value,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
         width: 320,
-
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-
         decoration: BoxDecoration(
           color: Colors.white,
-
           borderRadius: BorderRadius.circular(30),
-
           border: Border.all(color: Colors.black, width: 1.5),
         ),
-
         child: DropdownButtonHideUnderline(
           child: DropdownButton<String>(
             isExpanded: true,
-
+            value: value,
             hint: Text(
               label,
-
               style: const TextStyle(
                 fontFamily: 'Poppins',
-
                 fontWeight: FontWeight.bold,
-
                 fontSize: 18,
-
                 color: Colors.black,
               ),
             ),
-
             borderRadius: BorderRadius.circular(20),
-
             dropdownColor: Colors.white,
-
             icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black),
-
-            items: items.map((String value) {
+            items: items.map((String itemValue) {
               return DropdownMenuItem<String>(
-                value: value,
-
+                value: itemValue,
                 child: Text(
-                  value,
-
+                  itemValue,
                   style: const TextStyle(
                     fontFamily: 'Poppins',
-
                     fontSize: 18,
-
                     fontWeight: FontWeight.w500,
-
                     color: Colors.black,
                   ),
                 ),
               );
             }).toList(),
-
-            onChanged: (String? newValue) {},
+            onChanged: onChanged,
           ),
         ),
       ),

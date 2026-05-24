@@ -7,10 +7,10 @@ class FooterSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [_buildNewsletter(), _buildMainFooter()]);
+    return Column(children: [_buildNewsletter(context), _buildMainFooter()]);
   }
 
-  Widget _buildNewsletter() {
+  Widget _buildNewsletter(BuildContext context) {
     return Container(
       width: double.infinity,
       color: const Color(0xFF8FFF24),
@@ -39,6 +39,7 @@ class FooterSection extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           TextField(
+            onChanged: (value) {},
             decoration: InputDecoration(
               hintText: "Digite seu melhor endereço de email",
               hintStyle: const TextStyle(color: Colors.black),
@@ -63,7 +64,11 @@ class FooterSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Inscrição realizada com sucesso!')),
+              );
+            },
             style: ElevatedButton.styleFrom(
               overlayColor: const Color(0xFF430091),
               backgroundColor: const Color(0xFF780BF7),

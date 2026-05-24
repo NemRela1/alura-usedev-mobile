@@ -1,8 +1,7 @@
-import 'package:app/pages/home/widgets/categories_section.dart';
+import 'package:app/ui/home/widgets/categories_section.dart';
+import 'package:app/ui/home/widgets/hero_section.dart';
 import 'package:app/shared/widgets/footer.dart';
-import 'package:app/pages/home/widgets/hero_section.dart';
 import 'package:app/shared/widgets/navbar.dart';
-import 'package:app/shared/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,11 +14,10 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Navbar(),
-            Searchbar(),
-            HeroSection(),
-            CategoriesSection(),
-            FooterSection(),
+            const Navbar(),
+            const HeroSection(),
+            const CategoriesSection(),
+            const FooterSection(),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'searchbar.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});
@@ -9,56 +10,59 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.only(top: 40, bottom: 10, left: 8, right: 8),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          SvgPicture.asset('assets/images/UseDev.svg', height: _logoHeight),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      children: [
+        Container(
+          color: Colors.white,
+          padding: const EdgeInsets.only(top: 40, bottom: 10, left: 8, right: 8),
+          child: Stack(
+            alignment: Alignment.center,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                  size: _iconSize,
-                ),
-              ),
-
+              SvgPicture.asset('assets/images/UseDev.svg', height: _logoHeight),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/Perfil.svg',
-                      height: _iconSize,
-                      colorFilter: const ColorFilter.mode(
-                        Colors.black,
-                        BlendMode.srcIn,
-                      ),
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Colors.black,
+                      size: _iconSize,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/images/Carrinho.svg',
-                      height: _iconSize,
-                      colorFilter: const ColorFilter.mode(
-                        Colors.black,
-                        BlendMode.srcIn,
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          'assets/images/Perfil.svg',
+                          height: _iconSize,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       ),
-                    ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(
+                          'assets/images/Carrinho.svg',
+                          height: _iconSize,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        const Searchbar(),
+      ],
     );
   }
 }
