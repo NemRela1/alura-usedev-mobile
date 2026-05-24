@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../shared/app_components.dart';
 
 class ProductSection extends StatefulWidget {
@@ -85,9 +86,8 @@ class _ProductSectionState extends State<ProductSection> {
           const SizedBox(height: 10),
           Text(
             widget.title,
-            style: const TextStyle(
+            style: GoogleFonts.orbitron(
               fontSize: 32,
-              fontFamily: 'Orbitron',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -104,14 +104,13 @@ class _ProductSectionState extends State<ProductSection> {
           const SizedBox(height: 20),
           Text(
             widget.description,
-            style: const TextStyle(fontSize: 20, fontFamily: 'Poppins'),
+            style: GoogleFonts.poppins(fontSize: 20),
           ),
           const SizedBox(height: 15),
           Text(
             "R\$ ${widget.price}",
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 24,
-              fontFamily: 'Poppins',
               color: Colors.black,
               fontWeight: FontWeight.w600,
             ),
@@ -121,9 +120,8 @@ class _ProductSectionState extends State<ProductSection> {
             const SizedBox(height: 25),
             Text(
               widget.options!['optionsLabel'] ?? 'Escolha uma opção',
-              style: const TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 18,
-                fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -146,8 +144,7 @@ class _ProductSectionState extends State<ProductSection> {
                     ),
                     Text(
                       choiceString,
-                      style: const TextStyle(
-                        fontFamily: 'Poppins',
+                      style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontSize: 18,
                       ),

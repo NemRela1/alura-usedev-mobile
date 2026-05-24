@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../product/product.dart';
 import '../../../shared/app_components.dart';
+import '../../product/product.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
@@ -130,13 +131,12 @@ class CategoriesSection extends StatelessWidget {
           _sectionTitle("Categorias"),
           const SizedBox(height: 12),
 
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               "De roupas a gadgets tecnológicos temos tudo para atender suas paixões e hobbies com estilo e autenticidade.",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Poppins',
+              style: GoogleFonts.poppins(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF6B6B6B),
@@ -200,15 +200,14 @@ class CategoriesSection extends StatelessWidget {
 
           GestureDetector(
             onTap: () {},
-            child: const Text(
+            child: Text(
               "Ver mais",
-              style: TextStyle(
-                color: Color(0xFF780BF7),
-                fontFamily: 'Poppins',
+              style: GoogleFonts.poppins(
+                color: const Color(0xFF780BF7),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 decoration: TextDecoration.underline,
-                decorationColor: Color(0xFF780BF7),
+                decorationColor: const Color(0xFF780BF7),
                 decorationThickness: 2,
               ),
             ),
@@ -222,8 +221,7 @@ class CategoriesSection extends StatelessWidget {
   Widget _sectionTitle(String title) {
     return Text(
       title,
-      style: const TextStyle(
-        fontFamily: 'Orbitron',
+      style: GoogleFonts.orbitron(
         fontSize: 28,
         fontWeight: FontWeight.bold,
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FooterLink extends StatelessWidget {
   final String title;
@@ -15,11 +16,10 @@ class FooterLink extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 18,
-              fontFamily: 'Poppins',
             ),
           ),
           const SizedBox(height: 10),
@@ -121,8 +121,7 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontFamily: 'Orbitron',
+                    style: GoogleFonts.orbitron(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -131,8 +130,7 @@ class CategoryCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       "R\$ $price",
-                      style: const TextStyle(
-                        fontFamily: 'Poppins',
+                      style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -179,8 +177,7 @@ class CustomSelect extends StatelessWidget {
             value: value,
             hint: Text(
               label,
-              style: const TextStyle(
-                fontFamily: 'Poppins',
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
                 color: Colors.black,
@@ -194,8 +191,7 @@ class CustomSelect extends StatelessWidget {
                 value: itemValue,
                 child: Text(
                   itemValue,
-                  style: const TextStyle(
-                    fontFamily: 'Poppins',
+                  style: GoogleFonts.poppins(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: Colors.black,

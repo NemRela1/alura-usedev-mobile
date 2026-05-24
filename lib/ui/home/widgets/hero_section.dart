@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -44,28 +45,26 @@ class HeroSection extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       Text(
                         "Hora de abraçar seu",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Orbitron',
+                        style: GoogleFonts.orbitron(
                           fontSize: 42,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFF55DF),
+                          color: const Color(0xFFFF55DF),
                         ),
                       ),
                       Text(
                         "lado geek!",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Orbitron',
+                        style: GoogleFonts.orbitron(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF8FFF24),
+                          color: const Color(0xFF8FFF24),
                         ),
                       ),
                     ],
@@ -86,11 +85,10 @@ class HeroSection extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Ver as novidades!",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
-                      fontFamily: 'Poppins',
                       fontWeight: FontWeight.bold,
                     ),
                   ),

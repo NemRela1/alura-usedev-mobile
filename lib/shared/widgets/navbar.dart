@@ -1,6 +1,6 @@
+import 'package:app/shared/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'searchbar.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({super.key});

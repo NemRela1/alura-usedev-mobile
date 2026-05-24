@@ -1,6 +1,7 @@
-import 'package:app/shared/app_components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../app_components.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -17,24 +18,22 @@ class FooterSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: Column(
         children: [
-          const Text(
+          Text(
             "Inscreva-se para ganhar\ndescontos!",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'Orbitron',
+            style: GoogleFonts.orbitron(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF0D0221),
+              color: const Color(0xFF0D0221),
             ),
           ),
           const SizedBox(height: 15),
-          const Text(
+          Text(
             "Cadastre seu email, receba novidades\ne descontos imperdíveis antes de todo mundo!",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: 'Poppins',
+            style: GoogleFonts.poppins(
               fontSize: 14,
-              color: Color(0xFF0D0221),
+              color: const Color(0xFF0D0221),
             ),
           ),
           const SizedBox(height: 25),
@@ -78,10 +77,9 @@ class FooterSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: const Text(
+            child: Text(
               "Inscrever",
-              style: TextStyle(
-                fontFamily: 'Poppins',
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -102,11 +100,10 @@ class FooterSection extends StatelessWidget {
         children: [
           SvgPicture.asset('assets/images/UseDev_Verde.svg', height: 40),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             "Hora de abraçar seu lado geek!",
-            style: TextStyle(
-              color: Color(0xFF8FFF24),
-              fontFamily: 'Poppins',
+            style: GoogleFonts.poppins(
+              color: const Color(0xFF8FFF24),
               fontSize: 14,
             ),
           ),
@@ -139,12 +136,11 @@ class FooterSection extends StatelessWidget {
               ),
 
               const SizedBox(height: 20),
-              const Text(
+              Text(
                 "Formas de Pagamento",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',
                   fontSize: 16,
                 ),
               ),
@@ -164,12 +160,11 @@ class FooterSection extends StatelessWidget {
 
               const SizedBox(height: 40),
 
-              const Text(
+              Text(
                 "Siga nossas redes:",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',
                   fontSize: 16,
                 ),
               ),
