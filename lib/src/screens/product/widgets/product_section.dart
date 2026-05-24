@@ -195,7 +195,7 @@ class _ProductSectionState extends State<ProductSection> {
                 backgroundColor: const Color(0xFF780BF7),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 60,
+                  horizontal: 24,
                   vertical: 15,
                 ),
                 shape: RoundedRectangleBorder(
@@ -207,14 +207,14 @@ class _ProductSectionState extends State<ProductSection> {
                 children: [
                   const Icon(
                     Icons.add_shopping_cart,
-                    size: 24,
+                    size: 20,
                     color: Colors.white,
                   ),
-                  const SizedBox(width: 14),
+                  const SizedBox(width: 10),
                   Text(
                     "Adicionar ao carrinho",
                     style: GoogleFonts.poppins(
-                      fontSize: 22,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
