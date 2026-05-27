@@ -65,7 +65,7 @@ class _CategoriesSectionState extends State<CategoriesSection> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
               childAspectRatio: 1.3,

@@ -77,13 +77,10 @@ class _CartPageState extends State<CartPage> {
                           child: Column(
                             children: [
                               const SizedBox(height: 40),
-                              SvgPicture.asset(
-                                'assets/images/Carrinho.svg',
-                                height: 100,
-                                colorFilter: const ColorFilter.mode(
-                                  Colors.grey,
-                                  BlendMode.srcIn,
-                                ),
+                              const Icon(
+                                Icons.shopping_cart_outlined,
+                              size: 100,
+                              color: Colors.grey
                               ),
                               const SizedBox(height: 16),
                               Text(
