@@ -14,7 +14,7 @@ class HeroSection extends StatelessWidget {
         ),
       ),
       child: Column(
-        spacing: 20,
+        spacing: 15,
         crossAxisAlignment: .center,
         children: [
           Padding(
@@ -39,7 +39,6 @@ class HeroSection extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 25),
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
